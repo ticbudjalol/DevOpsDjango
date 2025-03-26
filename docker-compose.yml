@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  django:
+    build: .
+    container_name: django-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DJANGO_ALLOWED_HOSTS=*
