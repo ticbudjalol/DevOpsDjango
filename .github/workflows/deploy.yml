@@ -1,0 +1,17 @@
+name: 🚀 Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: 🔁 Pull latest code
+        run: git pull origin main
+
+      - name: 🐳 Rebuild containers
+        run: docker compose -f /opt/DevOpsDjango/docker-compose.yml up -d --build
